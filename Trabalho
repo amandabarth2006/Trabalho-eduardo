@@ -1,0 +1,110 @@
+📚 Reflexões sobre Clean Code: Funções, Objetos e Tratamento de Erros
+
+Recentemente, estudei os capítulos 3, 6 e 7 do livro Clean Code, escrito por Robert C. Martin, uma obra amplamente reconhecida por abordar práticas voltadas à construção de softwares mais organizados, legíveis e sustentáveis.
+
+Durante a leitura, ficou evidente que desenvolver software vai muito além de simplesmente entregar funcionalidades em funcionamento. Um código de qualidade precisa ser compreensível, fácil de manter e preparado para futuras evoluções. Afinal, ao longo do ciclo de vida de um sistema, o código será analisado e modificado inúmeras vezes, muitas vezes por pessoas diferentes daquelas que o criaram.
+
+⸻
+
+🔹 Capítulo 3 — Funções
+
+Neste capítulo, o autor destaca a importância de criar funções com responsabilidades específicas e bem definidas. A ideia central é que cada função deve possuir um único propósito, evitando acumular tarefas distintas em um mesmo bloco de código.
+
+Funções menores tendem a ser mais fáceis de compreender, testar e reutilizar. Além disso, a escolha de nomes claros e significativos permite que o próprio código explique sua finalidade, reduzindo a necessidade de comentários excessivos.
+
+Principais pontos abordados
+
+* Desenvolver funções simples e focadas em uma única responsabilidade.
+* Utilizar nomes que expressem claramente a intenção do código.
+* Evitar listas extensas de parâmetros.
+* Dividir processos complexos em etapas menores.
+* Minimizar efeitos colaterais que possam gerar comportamentos inesperados.
+
+Exemplo
+
+❌ Menor clareza:
+
+public void processarUsuario(Usuario usuario) {
+    validar(usuario);
+    salvar(usuario);
+    enviarEmail(usuario);
+}
+
+✅ Maior legibilidade:
+
+public void cadastrarUsuario(Usuario usuario) {
+    validarUsuario(usuario);
+    salvarUsuario(usuario);
+    notificarCadastro(usuario);
+}
+
+Embora a lógica seja semelhante, a segunda versão comunica melhor o propósito de cada ação realizada.
+
+⸻
+
+🔹 Capítulo 6 — Objetos e Estruturas de Dados
+
+O capítulo aborda conceitos importantes relacionados à programação orientada a objetos, especialmente a distinção entre objetos e estruturas de dados.
+
+Enquanto objetos combinam dados e comportamentos, estruturas de dados têm como principal função armazenar e transportar informações. O autor enfatiza a importância do encapsulamento para evitar que detalhes internos de um objeto fiquem expostos de maneira desnecessária.
+
+Ao proteger sua implementação interna e disponibilizar apenas as operações necessárias, os objetos reduzem dependências entre componentes e tornam o sistema mais flexível diante de mudanças.
+
+Principais pontos abordados
+
+* Valorizar o encapsulamento das informações.
+* Trabalhar com abstrações em vez de implementações específicas.
+* Diminuir dependências entre módulos.
+* Reduzir o acoplamento do sistema.
+* Facilitar adaptações e manutenções futuras.
+
+Esse cuidado contribui para a construção de aplicações mais organizadas, escaláveis e resistentes a alterações.
+
+⸻
+
+🔹 Capítulo 7 — Tratamento de Erros
+
+O tratamento de erros é apresentado como um elemento essencial para a qualidade do software. Muitas vezes negligenciado, ele influencia diretamente a legibilidade e a confiabilidade do sistema.
+
+O autor defende que a lógica principal da aplicação deve permanecer limpa e objetiva, enquanto as situações excepcionais devem ser tratadas separadamente. Dessa forma, o fluxo principal do código fica mais fácil de acompanhar.
+
+Principais pontos abordados
+
+* Preferir exceções ao uso de códigos de retorno para indicar falhas.
+* Criar mensagens de erro informativas.
+* Evitar retornos nulos sempre que possível.
+* Separar a lógica de negócio do tratamento de exceções.
+* Facilitar a identificação e correção de problemas.
+
+Exemplo
+
+❌ Utilizando código de erro:
+
+if (usuario == null) {
+    return -1;
+}
+
+✅ Utilizando exceção:
+
+if (usuario == null) {
+    throw new UsuarioNaoEncontradoException();
+}
+
+Nesse modelo, o fluxo principal permanece mais organizado e os erros podem ser tratados de maneira centralizada e consistente.
+
+⸻
+
+💡 Considerações Finais
+
+A leitura desses capítulos reforçou a importância de pensar na manutenção do software desde o início do desenvolvimento. Produzir código limpo não se resume a questões estéticas ou ao cumprimento de padrões; trata-se de criar soluções que possam ser entendidas, modificadas e evoluídas com facilidade ao longo do tempo.
+
+Funções bem definidas, objetos corretamente encapsulados e estratégias adequadas para tratamento de erros contribuem para sistemas mais robustos e sustentáveis. Em muitos casos, os maiores desafios de um projeto não estão relacionados à tecnologia utilizada, mas sim à forma como o código foi estruturado.
+
+Mais do que instruções para o computador, o código é uma ferramenta de comunicação entre desenvolvedores. Quanto mais clara essa comunicação, maior será a qualidade e a longevidade do software construído.
+
+⸻
+
+📖 Referência
+
+Clean Code
+Autor: Robert C. Martin.
